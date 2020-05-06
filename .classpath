@@ -7,7 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/java-client-7.3.0.jar"/>
-	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/selenium-server-standalone-3.141.59.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/201/Appium/project/AppiumDemoProject/lib/java-client-7.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/201/Appium/project/AppiumDemoProject/lib/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
