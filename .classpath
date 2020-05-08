@@ -38,5 +38,11 @@
 	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/commons-csv-1.8-sources.jar"/>
 	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/cglib-2.2.jar"/>
 	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/org.objectweb.asm-3.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/extentreports-2.41.2.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/jcommander-1.48.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/pratik/appium 201/AppiumProject201/AppiumDemoProject/lib/snakeyaml-1.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

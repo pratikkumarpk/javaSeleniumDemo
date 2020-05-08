@@ -3,7 +3,7 @@ package com.yorbit.business;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.yorbit.utilities.BaseTest;
+import com.yorbit.tests.BaseTest;
 
 import io.appium.java_client.MobileElement;
 

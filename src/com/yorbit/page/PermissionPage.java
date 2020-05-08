@@ -18,7 +18,7 @@ public class PermissionPage {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 	
-	@AndroidFindBy(id = "com.android.permissioncontroller:id/continue_button")
+	@AndroidFindBy(id = "com.android.permissioncontroller:id/continue_bu")
 	MobileElement continueButton;
 	
 	public void clickOncontinueButton() { 
