@@ -64,7 +64,7 @@ public class BaseTest {
 	}
 
 	@AfterMethod
-	public void getResult(ITestResult result) {
+	public void getResult(ITestResult result) { 
 		System.out.println("I am in after Method");
 		if (result.getStatus() == ITestResult.FAILURE) {
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
