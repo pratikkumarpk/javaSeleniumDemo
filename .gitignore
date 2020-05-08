@@ -2,6 +2,7 @@
 *.class
 
 test-output/
+ExtentReport/*.html
 
 # Log file
 *.log
