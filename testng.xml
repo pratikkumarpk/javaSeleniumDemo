@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.yorbit.tests.DemoTestCases"/>
+      <class name="com.yorbit.tests.UserRegistration"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
