@@ -7,20 +7,21 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class PermissionPage {
+public class HomePage {
 	
 	AndroidDriver<MobileElement> driver;
 
-	public PermissionPage(AndroidDriver<MobileElement> driver) {
+	public HomePage(AndroidDriver<MobileElement> driver) {
 		this.driver = driver; 
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 	
-	@AndroidFindBy(id = "com.android.permissioncontroller:id/continue_button")
-	MobileElement continueButton;
+	@AndroidFindBy(id = "io.selendroid.testapp:id/startUserRegistration")
+	MobileElement btnRegisterNewUser;
 	
-	public void clickOncontinueButton() { 
-		continueButton.click(); 
+	public void clickOnNewUserregistrationButton() { 
+		btnRegisterNewUser.click(); 
     }
+
 
 }

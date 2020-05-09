@@ -7,6 +7,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
@@ -18,14 +19,14 @@ import org.testng.annotations.BeforeTest;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import com.yorbit.utilities.FileReader;
+import com.yorbit.utilities.FileReaderUtil;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class BaseTest {
 	public static AndroidDriver<?> mobiledriver;
-	static FileReader reader = new FileReader();
+	static FileReaderUtil reader = new FileReaderUtil();
 	public static String localDir = System.getProperty("user.dir");
 	public static ExtentReports extent;
 	public static ExtentTest logger;
@@ -63,6 +64,7 @@ public class BaseTest {
 			capabilities.setCapability("appPackage", reader.readPropertiesFile(desiredCaps, "appPackage"));
 			capabilities.setCapability("appActivity", reader.readPropertiesFile(desiredCaps, "appActivity"));
 			mobiledriver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			mobiledriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			logger.log(LogStatus.PASS, "Driver Created", "launchApp");
 		} catch (Exception e) {
 			logger.log(LogStatus.FAIL, "Exception occured in launching app " + e);
@@ -78,7 +80,6 @@ public class BaseTest {
 	public void startReport() throws Exception {
 		try {
 			Calendar cal = Calendar.getInstance();
-			System.out.println("I am in before Test");
 			extent = new ExtentReports(System.getProperty("user.dir") + "/ExtentReport/AppiumDemoProjectReport__"
 					+ cal.getTime().toString().replace(" ", "").replace(":", "_") + ".html", true);
 			extent.addSystemInfo("Environment", "Environment Name");

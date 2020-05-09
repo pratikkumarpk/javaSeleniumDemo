@@ -16,7 +16,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-public class FileReader {
+public class FileReaderUtil {
 	
 
 	/**
@@ -26,7 +26,7 @@ public class FileReader {
 	 * @return
 	 * @throws IOException
 	 */
-	public static Map<String, String> readExcel(String fileName, int row) throws IOException {
+	public static Map<String, String> readCSVFile(String fileName, int row) throws IOException {
 
 		List<Map<String, String>> allValues = new ArrayList<Map<String, String>>();
 		try {
