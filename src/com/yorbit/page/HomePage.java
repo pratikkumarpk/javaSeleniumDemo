@@ -22,6 +22,35 @@ public class HomePage {
 	public void clickOnNewUserregistrationButton() { 
 		btnRegisterNewUser.click(); 
     }
-
-
+	
+	@AndroidFindBy(id = "io.selendroid.testapp:id/buttonStartWebview")
+	MobileElement btnWebView;
+	
+	public void clickOnWebViewButton() { 
+		btnWebView.click(); 
+    }
+	
+	@AndroidFindBy(id = "io.selendroid.testapp:id/showPopupWindowButton")
+	MobileElement btnPopup;
+	
+	public void clickOnbtnPopup() { 
+		btnPopup.click(); 
+    }
+	
+	@AndroidFindBy(id = "io.selendroid.testapp:id/waitingButtonTest")
+	MobileElement btnProgressBar;
+	
+	public void clickBtnProgressBar() { 
+		btnProgressBar.click(); 
+    }
+	
+	@AndroidFindBy(id = "io.selendroid.testapp:id/exceptionTestButton")
+	MobileElement btnCrash;
+	
+	public void clickBtnCrash() {
+		btnCrash.click();
+	}
+	
+	
+	
 }

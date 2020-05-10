@@ -32,7 +32,9 @@ public class BaseTest {
 	public static ExtentTest logger;
 
 	/**
-	 * Launches app based on the desired capability in desiredCapibilty.properties file.
+	 * Launches app based on the desired capability in desiredCapibilty.properties
+	 * file.
+	 * 
 	 * @throws Exception
 	 */
 	public void lauchApp() throws Exception {
@@ -54,7 +56,7 @@ public class BaseTest {
 				capabilities.setCapability("platformName", reader.readPropertiesFile(desiredCaps, "platformName"));
 				capabilities.setCapability("deviceName", "Android Emulator");
 				capabilities.setCapability("noReset", false);
-				
+
 				break;
 			default:
 				throw new IllegalArgumentException("Unexpected value: ");
@@ -74,6 +76,7 @@ public class BaseTest {
 
 	/**
 	 * Starts reports.
+	 * 
 	 * @throws Exception
 	 */
 	@BeforeTest
@@ -90,9 +93,10 @@ public class BaseTest {
 			throw new Exception("Starting report failed " + e);
 		}
 	}
-	
+
 	/**
 	 * Logs status of test after execution.
+	 * 
 	 * @param result
 	 */
 	@AfterMethod
@@ -105,9 +109,10 @@ public class BaseTest {
 		}
 		extent.endTest(logger);
 	}
-	
+
 	/**
 	 * resets logger instance.
+	 * 
 	 * @throws Exception
 	 */
 	@AfterTest
@@ -120,16 +125,18 @@ public class BaseTest {
 			throw new Exception("Failed to close Report" + e);
 		}
 	}
+
 	/**
 	 * Closes app instance and driver.
+	 * 
 	 * @throws Exception
 	 */
 	public void closeAppAndEndSession() throws Exception {
 		try {
 			mobiledriver.closeApp();
 			mobiledriver.quit();
+			logger.log(LogStatus.PASS, "Closed app");
 		} catch (Exception e) {
-			logger.log(LogStatus.FAIL, "Failed to close the App" + e);
 			throw new Exception("Failed to close the App " + e);
 		}
 	}

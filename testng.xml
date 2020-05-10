@@ -4,6 +4,8 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="com.yorbit.tests.NewUserRegistration"/>
+      <class name="com.yorbit.tests.RegisterUsingProgressBar"/>
+        <class name="com.yorbit.tests.AppCrash"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
