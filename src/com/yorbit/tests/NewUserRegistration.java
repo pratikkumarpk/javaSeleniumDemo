@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.relevantcodes.extentreports.LogStatus;
 import com.yorbit.business.PermissionController;
 import com.yorbit.business.UserRegistration;
-import com.yorbit.page.RegistrationSuccessPage;
 import com.yorbit.utilities.Common;
 import com.yorbit.utilities.FileReaderUtil;
 
