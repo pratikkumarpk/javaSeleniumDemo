@@ -6,6 +6,7 @@
       <class name="com.yorbit.tests.NewUserRegistration"/>
       <class name="com.yorbit.tests.RegisterUsingProgressBar"/>
         <class name="com.yorbit.tests.AppCrash"/>
+        <class name="com.yorbit.tests.WebApptest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
