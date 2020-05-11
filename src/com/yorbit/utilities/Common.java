@@ -1,5 +1,10 @@
+/**
+ * @author Pakshi
+ *
+ */
 package com.yorbit.utilities;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +25,7 @@ public class Common {
 		wait.until(ExpectedConditions.alertIsPresent());
 		mobiledriver.switchTo().alert().accept();
 		}catch (Exception e) {
-			throw new Exception("Error in accepting alert"+e.getStackTrace());
+			throw new Exception("Error in accepting alert"+Arrays.toString(e.getStackTrace()));
 		}
 	}
 	
@@ -35,7 +40,7 @@ public class Common {
 		//mobiledriver.context(contextNames.toArray()[1]);
 		mobiledriver.context("NATIVE_APP");
 		}catch (Exception e) {
-			throw new Exception("Error in Switching contextt"+e.getStackTrace());
+			throw new Exception("Error in Switching context"+Arrays.toString(e.getStackTrace()));
 		}
 
 

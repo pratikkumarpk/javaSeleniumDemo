@@ -1,4 +1,10 @@
+/**
+ * @author Pakshi
+ *
+ */
 package com.yorbit.business;
+
+import java.util.Arrays;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -21,7 +27,7 @@ public class PermissionController{
 		pp.clickOncontinueButton();
 		logger.log(LogStatus.PASS, "Acccepted permission");
 		}catch (Exception e) {
-			throw new Exception("Error in selecting permission"+e.getStackTrace());
+			throw new Exception("Error in selecting permission"+Arrays.toString(e.getStackTrace()));
 		}
 	}
 }

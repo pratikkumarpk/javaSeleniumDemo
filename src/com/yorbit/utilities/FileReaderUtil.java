@@ -1,3 +1,7 @@
+/**
+ * @author Pakshi
+ *
+ */
 package com.yorbit.utilities;
 
 import java.io.FileInputStream;
@@ -7,6 +11,7 @@ import java.io.Reader;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -24,9 +29,9 @@ public class FileReaderUtil {
 	 * @param fileName
 	 * @param row
 	 * @return
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	public static Map<String, String> readCSVFile(String fileName, int row) throws IOException {
+	public static Map<String, String> readCSVFile(String fileName, int row) throws Exception {
 
 		List<Map<String, String>> allValues = new ArrayList<Map<String, String>>();
 		try {
@@ -41,8 +46,7 @@ public class FileReaderUtil {
 			}
 			return allValues.get(row);
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			throw new Exception("Error in reading test data"+Arrays.toString(e.getStackTrace()));
 		}
 
 	}

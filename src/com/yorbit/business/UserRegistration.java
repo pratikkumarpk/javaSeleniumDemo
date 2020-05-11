@@ -1,5 +1,10 @@
+/**
+ * @author Pakshi
+ *
+ */
 package com.yorbit.business;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.testng.Assert;
@@ -35,9 +40,9 @@ public class UserRegistration {
 			mobiledriver.hideKeyboard();
 			rp.selectAcceptCheckBox();
 			rp.clcikButtonregister();
-			logger.log(LogStatus.PASS, "Filled registration form");
+			logger.log(LogStatus.PASS, "Filled registration form with data : "+data.toString());
 		} catch (Exception e) {
-			throw new Exception("Error in filling registration form" + e.getStackTrace());
+			throw new Exception("Error in filling registration form" + Arrays.toString(e.getStackTrace()));
 		}
 
 	}
@@ -55,7 +60,7 @@ public class UserRegistration {
 			hp.clickOnNewUserregistrationButton();
 			logger.log(LogStatus.PASS, "Clicked on new user registration");
 		} catch (Exception e) {
-			throw new Exception("Error in clciking new user registration button" + e.getStackTrace());
+			throw new Exception("Error in clciking new user registration button" + Arrays.toString(e.getStackTrace()));
 		}
 	}
 
@@ -103,7 +108,7 @@ public class UserRegistration {
 				throw new IllegalArgumentException("Unexpected value: " + key);
 			}
 		} catch (Exception e) {
-			throw new Exception("Error in selecting method" + e.getStackTrace());
+			throw new Exception("Error in selecting method" + Arrays.toString(e.getStackTrace()));
 		}
 	}
 

@@ -1,8 +1,13 @@
+/**
+ * @author Pakshi
+ *
+ */
 package com.yorbit.tests;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.ServerSocket;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
@@ -13,7 +18,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -23,6 +30,9 @@ import com.yorbit.utilities.FileReaderUtil;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class BaseTest {
 	public static AndroidDriver<?> mobiledriver;
@@ -30,7 +40,6 @@ public class BaseTest {
 	public static String localDir = System.getProperty("user.dir");
 	public static ExtentReports extent;
 	public static ExtentTest logger;
-
 	/**
 	 * Launches app based on the desired capability in desiredCapibilty.properties
 	 * file.
@@ -48,6 +57,9 @@ public class BaseTest {
 				capabilities.setCapability("platformName", reader.readPropertiesFile(desiredCaps, "platformName"));
 				capabilities.setCapability("deviceName", reader.readPropertiesFile(desiredCaps, "deviceName"));
 				capabilities.setCapability("noReset", false);
+				capabilities.setCapability("app", localDir + reader.readPropertiesFile(desiredCaps, "app"));
+				capabilities.setCapability("appPackage", reader.readPropertiesFile(desiredCaps, "appPackage"));
+				capabilities.setCapability("appActivity", reader.readPropertiesFile(desiredCaps, "appActivity"));
 				break;
 			}
 			case "emulator":
@@ -56,15 +68,24 @@ public class BaseTest {
 				capabilities.setCapability("platformName", reader.readPropertiesFile(desiredCaps, "platformName"));
 				capabilities.setCapability("deviceName", "Android Emulator");
 				capabilities.setCapability("noReset", false);
-
+				capabilities.setCapability("app", localDir + reader.readPropertiesFile(desiredCaps, "app"));
+				capabilities.setCapability("appPackage", reader.readPropertiesFile(desiredCaps, "appPackage"));
+				capabilities.setCapability("appActivity", reader.readPropertiesFile(desiredCaps, "appActivity"));
+				break;
+			case "browser":
+				capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION,
+						reader.readPropertiesFile(desiredCaps, "APPIUM_VERSION"));
+				capabilities.setCapability("platformName", reader.readPropertiesFile(desiredCaps, "platformName"));
+				capabilities.setCapability("deviceName", reader.readPropertiesFile(desiredCaps, "deviceName"));
+				capabilities.setCapability("browserName", reader.readPropertiesFile(desiredCaps, "browser"));
+				capabilities.setCapability("noReset", false);
+				String s = "C:\\Users\\User1\\Downloads\\chromedriver.exe";
+				System.setProperty("webdriver.chrome.driver", s);
 				break;
 			default:
 				throw new IllegalArgumentException("Unexpected value: ");
 			}
 			capabilities.setCapability("newCommandTimeout", 2000);
-			capabilities.setCapability("app", localDir + reader.readPropertiesFile(desiredCaps, "app"));
-			capabilities.setCapability("appPackage", reader.readPropertiesFile(desiredCaps, "appPackage"));
-			capabilities.setCapability("appActivity", reader.readPropertiesFile(desiredCaps, "appActivity"));
 			mobiledriver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 			mobiledriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			logger.log(LogStatus.PASS, "Driver Created", "launchApp");
@@ -87,7 +108,7 @@ public class BaseTest {
 					+ cal.getTime().toString().replace(" ", "").replace(":", "_") + ".html", true);
 			extent.addSystemInfo("Environment", "Environment Name");
 			extent.addSystemInfo("Host Name", "Appium 201").addSystemInfo("Environment", "Automation Testing")
-					.addSystemInfo("User Name", "Pratik Kumar");
+					.addSystemInfo("User Name", "Pakshi Kumar");
 			extent.loadConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		} catch (Exception e) {
 			throw new Exception("Starting report failed " + e);
@@ -140,4 +161,5 @@ public class BaseTest {
 			throw new Exception("Failed to close the App " + e);
 		}
 	}
+	
 }
