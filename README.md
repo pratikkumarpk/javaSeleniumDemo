@@ -20,7 +20,7 @@ This is a demo project for Appium using testng.
 # **Execution**
 
 ## Change the device name,app activity and app package name in desired capabilty properties file( Use adb devices to get device name)
-## open cmd in the project path and mvn test will execute the scripts.
+## open cmd in the project path and **mvn test** will execute the scripts.
 ## change the classes name in testng.xml to run desired tests.
 
 
