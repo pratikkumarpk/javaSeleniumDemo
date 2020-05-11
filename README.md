@@ -1,22 +1,23 @@
 # AppiumDemoProject
 This is a demo project for Appium using testng.
 
-## Dependencies
-## Java - 13
+### Dependencies
 
-## testNg - 7.0.0
+### Java - 13
 
-## selenium-java - 3.141,59
+### testNg - 7.0.0
 
-## extentReports - 2.41.2
+### selenium-java - 3.141,59
 
-## java-Client : 7.3.0
+### extentReports - 2.41.2
 
-## commons-collection4 -4.4
+### java-Client : 7.3.0
 
-## cglib -3.2.12
+### commons-collection4 -4.4
 
-# Execution
+### cglib -3.2.12
+
+# **Execution**
 
 ## Change the device name,app activity and app package name in desired capabilty properties file( Use adb devices to get device name)
 ## open cmd in the project path and mvn test will execute the scripts.
