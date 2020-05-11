@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.yorbit.tests.WebApptest">
+      <class name="com.yorbit.tests.NewUserRegistration">
         <methods>
+          <include name="registerNewUserAndVerify"/>
           <include name="startReport"/>
           <include name="endReport"/>
           <include name="getResult"/>
-          <include name="testWebApp"/>
         </methods>
-      </class> <!-- com.yorbit.tests.WebApptest -->
+      </class> <!-- com.yorbit.tests.NewUserRegistration -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
