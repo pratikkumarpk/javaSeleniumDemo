@@ -40,8 +40,9 @@ public class NewUserRegistration extends BaseTest {
 			UserRegistration.verifyRegistration(mobiledriver, data, "username");
 			closeAppAndEndSession();
 		}catch (Exception e) {
-			closeAppAndEndSession();
 			Assert.fail();
+			closeAppAndEndSession();
+			
 		}
 	}
 }

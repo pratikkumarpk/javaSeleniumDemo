@@ -26,6 +26,7 @@ import org.testng.annotations.BeforeTest;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.yorbit.utilities.Common;
 import com.yorbit.utilities.FileReaderUtil;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -40,6 +41,8 @@ public class BaseTest {
 	public static String localDir = System.getProperty("user.dir");
 	public static ExtentReports extent;
 	public static ExtentTest logger;
+	public static AppiumDriverLocalService service = null;
+	
 	/**
 	 * Launches app based on the desired capability in desiredCapibilty.properties
 	 * file.
@@ -119,12 +122,15 @@ public class BaseTest {
 	 * Logs status of test after execution.
 	 * 
 	 * @param result
+	 * @throws Exception 
 	 */
 	@AfterMethod
-	public void getResult(ITestResult result) {
+	public void getResult(ITestResult result) throws Exception {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
+			String screenshotPath = Common.getScreenshot(mobiledriver, result.getName());
+			logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
 		} else if (result.getStatus() == ITestResult.SKIP) {
 			logger.log(LogStatus.SKIP, "Test Case Skipped is " + result.getName());
 		}
@@ -160,6 +166,36 @@ public class BaseTest {
 		} catch (Exception e) {
 			throw new Exception("Failed to close the App " + e);
 		}
+	}
+	
+	@BeforeSuite
+	public void startServer() {
+		//Set Capabilities
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("noReset", "false");
+		//cap.setCapability("--chromedriver-executable", "C://pratik//appium 201//AppiumProject201//AppiumDemoProject//chromedriver.exe");
+		
+		//Build the Appium service
+		AppiumServiceBuilder builder = new AppiumServiceBuilder();
+		builder.withIPAddress("127.0.0.1");
+		builder.usingPort(4723);
+		builder.withCapabilities(cap);
+		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
+		/*
+		 * builder.usingDriverExecutable(new File("/Users/ssimakurthy/local/bin/node"));
+		 * builder.withAppiumJS(new
+		 * File("/usr/local/lib/node_modules/appium/build/lib/main.js"));
+		 */
+		
+		//Start the server with the builder
+		service = AppiumDriverLocalService.buildService(builder);
+		service.start();
+	}
+	
+	@AfterSuite
+	public void stopServer() {
+		service.stop();
 	}
 	
 }

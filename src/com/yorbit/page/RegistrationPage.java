@@ -21,7 +21,7 @@ public class RegistrationPage {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
-	@AndroidFindBy(id = "io.selendroid.testapp:id/inputUsername")
+	@AndroidFindBy(id = "io.selendroid.testapp:id/inputUsernam")
 	MobileElement txtBoxUserName;
 
 	public void typeInUserName(String UserName) {

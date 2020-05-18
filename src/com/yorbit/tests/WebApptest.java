@@ -41,8 +41,9 @@ public class WebApptest extends BaseTest {
 			closeAppAndEndSession();
 		}catch (Exception e) {
 			e.printStackTrace();
-			closeAppAndEndSession();
 			Assert.fail();
+			closeAppAndEndSession();
+			
 		}
 	}
 

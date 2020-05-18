@@ -9,6 +9,8 @@
           <include name="startReport"/>
           <include name="endReport"/>
           <include name="getResult"/>
+          <include name="stopServer"/>
+          <include name="startServer"/>
         </methods>
       </class> <!-- com.yorbit.tests.NewUserRegistration -->
     </classes>

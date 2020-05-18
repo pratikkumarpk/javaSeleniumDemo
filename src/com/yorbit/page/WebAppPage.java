@@ -18,7 +18,7 @@ public class WebAppPage  {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
-	@FindBy(xpath = "//input[@name='first_name']")
+	@FindBy(xpath = "//input[@name='first_nam']")
 	MobileElement txtBoxFN;
 
 	public void enterFirstName(String userName) {
