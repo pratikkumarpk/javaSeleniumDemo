@@ -31,6 +31,7 @@ public class FileReaderUtil {
 	 * @return
 	 * @throws Exception 
 	 */
+	@SuppressWarnings("resource")
 	public static Map<String, String> readCSVFile(String fileName, int row) throws Exception {
 
 		List<Map<String, String>> allValues = new ArrayList<Map<String, String>>();

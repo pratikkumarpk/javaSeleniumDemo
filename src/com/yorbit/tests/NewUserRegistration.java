@@ -10,39 +10,47 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.relevantcodes.extentreports.LogStatus;
-import com.yorbit.business.PermissionController;
-import com.yorbit.business.UserRegistration;
-import com.yorbit.utilities.Common;
+import com.yorbit.business.HomeFunctions;
+import com.yorbit.business.UserRegistrationFunction;
 import com.yorbit.utilities.FileReaderUtil;
+import com.yorbit.utilities.Reporter;
+import com.yorbit.utilities.TestConstants;
 
 public class NewUserRegistration extends BaseTest {
-	
+
 	@Test
-	public void registerNewUserAndVerify() throws Exception {
+	public void newUserRegistration() throws Exception {
 		try {
-			logger = extent.startTest("register New User and Verify");
-			Map<String,String> data = new HashMap<String,String>();
+			logger = extent.startTest("User Registration");
+
+			Map<String, String> data = new HashMap<String, String>();
+			data = FileReaderUtil.readCSVFile(localDir + "/DataFiles/NewUserRegistration.csv", 0);
+
 			lauchApp();
-			
-			data = FileReaderUtil.readCSVFile(localDir+"/DataFiles/NewUserRegistration.csv", 0);
-			PermissionController.acceptPermission(mobiledriver,logger);
-			
-			Common.acceptAlert(mobiledriver);
-			logger.log(LogStatus.PASS,"Accepted Alert");
-			
-			UserRegistration.clickOnStartRegistration(mobiledriver,logger);
-			UserRegistration.fillRegistration(mobiledriver,data,logger);
-			UserRegistration.verifyRegistration(mobiledriver, data, "name");
-			UserRegistration.verifyRegistration(mobiledriver, data, "email");
-			UserRegistration.verifyRegistration(mobiledriver, data, "lang");
-			UserRegistration.verifyRegistration(mobiledriver, data, "pwd");
-			UserRegistration.verifyRegistration(mobiledriver, data, "username");
+
+			HomeFunctions.verifyHomePageDisplayed(driver, logger);
+
+			HomeFunctions.clickOnMenuOptions(driver, logger, "register");
+
+			UserRegistrationFunction.verifyUserRegistrationPageDisplayed(driver, logger);
+
+			UserRegistrationFunction.fillContactInformation(driver, logger, data);
+
+			UserRegistrationFunction.fillMailingAddress(driver, logger, data);
+
+			UserRegistrationFunction.fillUserInformation(driver, logger, data);
+
+			UserRegistrationFunction.register(driver, logger);
+
+			UserRegistrationFunction.clickOnSignInLinkOnRegistrationSuccessPage(driver, logger);
+
+			HomeFunctions.singIn(driver, logger, TestConstants.newUserDetails);
+
 			closeAppAndEndSession();
-		}catch (Exception e) {
+		} catch (Exception e) {
+			Reporter.logStatus("Fail", "Error occured "+e.toString(), logger);
 			Assert.fail();
-			closeAppAndEndSession();
-			
 		}
 	}
+
 }

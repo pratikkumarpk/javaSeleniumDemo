@@ -4,56 +4,45 @@
  */
 package com.yorbit.page;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HomePage {
 	
-	AndroidDriver<MobileElement> driver;
+	WebDriver driver;
+	String se = "";
 
-	public HomePage(AndroidDriver<MobileElement> driver) {
-		this.driver = driver; 
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	public HomePage(WebDriver driver) {
+		this.driver = (WebDriver) driver; 
+		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 30), this);
 	}
 	
-	@AndroidFindBy(id = "io.selendroid.testapp:id/startUserRegistration")
-	MobileElement btnRegisterNewUser;
+	@FindBy(css = ".mouseOut")
+	public WebElement homeLabel;
 	
-	public void clickOnNewUserregistrationButton() { 
-		btnRegisterNewUser.click(); 
-    }
+	@FindBy(xpath = "//a[text()='Home']")
+	public WebElement homeLink;
 	
-	@AndroidFindBy(id = "io.selendroid.testapp:id/buttonStartWebview")
-	MobileElement btnWebView;
+	@FindBy(xpath = "//a[text()='SIGN-ON']")
+	public WebElement signOnLink;
 	
-	public void clickOnWebViewButton() { 
-		btnWebView.click(); 
-    }
+	@FindBy(xpath = "//a[text()='REGISTER']")
+	public WebElement registerLink;
 	
-	@AndroidFindBy(id = "io.selendroid.testapp:id/showPopupWindowButton")
-	MobileElement btnPopup;
+	@FindBy(xpath = "//a[text()='Flights']")
+	public WebElement flightsLink;
 	
-	public void clickOnbtnPopup() { 
-		btnPopup.click(); 
-    }
+	@FindBy(xpath = "//a[text()='Hotels']")
+	public WebElement hotelsLink;
 	
-	@AndroidFindBy(id = "io.selendroid.testapp:id/waitingButtonTest")
-	MobileElement btnProgressBar;
+	@FindBy(xpath = "//a[text()='Car Rentals']")
+	public WebElement carRentalLink;
 	
-	public void clickBtnProgressBar() { 
-		btnProgressBar.click(); 
-    }
-	
-	@AndroidFindBy(id = "io.selendroid.testapp:id/exceptionTestButton")
-	MobileElement btnCrash;
-	
-	public void clickBtnCrash() {
-		btnCrash.click();
-	}
+	@FindBy(xpath = "//a[text()='Cruises']")
+	public WebElement cruisesLink;
 	
 	
 	
