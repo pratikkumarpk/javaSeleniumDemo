@@ -16,9 +16,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -66,8 +64,6 @@ public class BaseTest {
 			}
 			case "ie":
 				System.setProperty("webdriver.ie.driver", localDir + "//drivers//IEDriverServer.exe");
-
-				// Creating an object of InternetExplorerDriver
 				driver = new InternetExplorerDriver();
 				break;
 			default:
@@ -94,9 +90,9 @@ public class BaseTest {
 			Calendar cal = Calendar.getInstance();
 			extent = new ExtentReports(System.getProperty("user.dir") + "/ExtentReport/SelJavaProjectReport__"
 					+ cal.getTime().toString().replace(" ", "").replace(":", "_") + ".html", true);
-			extent.addSystemInfo("Environment", "Environment Name");
-			extent.addSystemInfo("Host Name", "Appium 201").addSystemInfo("Environment", "Automation Testing")
-					.addSystemInfo("User Name", "Pakshi Kumar");
+			extent.addSystemInfo("Environment", "Test Environment");
+			extent.addSystemInfo("Host Name", System.getProperty("hostname")).addSystemInfo("Environment", "Automation Testing")
+					.addSystemInfo("User Name", "Pakshi");
 			extent.loadConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		} catch (Exception e) {
 			throw new Exception("Starting report failed " + e);
@@ -152,36 +148,4 @@ public class BaseTest {
 			throw new Exception("Failed to close the App " + e);
 		}
 	}
-
-	@BeforeSuite
-	public void startServer() {
-		// Set Capabilities
-		/*
-		 * DesiredCapabilities cap = new DesiredCapabilities();
-		 * cap.setCapability("noReset", "false");
-		 * //cap.setCapability("--chromedriver-executable",
-		 * "C://pratik//appium 201//AppiumProject201//AppiumDemoProject//chromedriver.exe"
-		 * );
-		 * 
-		 * //Build the Appium service AppiumServiceBuilder builder = new
-		 * AppiumServiceBuilder(); builder.withIPAddress("127.0.0.1");
-		 * builder.usingPort(4723); builder.withCapabilities(cap);
-		 * builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-		 * builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-		 * 
-		 * builder.usingDriverExecutable(new File("/Users/ssimakurthy/local/bin/node"));
-		 * builder.withAppiumJS(new
-		 * File("/usr/local/lib/node_modules/appium/build/lib/main.js"));
-		 * 
-		 * 
-		 * //Start the server with the builder service =
-		 * AppiumDriverLocalService.buildService(builder); service.start();
-		 */
-	}
-
-	@AfterSuite
-	public void stopServer() {
-		/* service.stop(); */
-	}
-
 }
