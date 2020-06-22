@@ -11,8 +11,6 @@ This is a demo project for Appium using testng.
 
 ### extentReports - 2.41.2
 
-### java-Client : 7.3.0
-
 ### commons-collection4 -4.4
 
 ### cglib -3.2.12
