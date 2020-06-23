@@ -88,11 +88,11 @@ public class BaseTest {
 	public void startReport() throws Exception {
 		try {
 			Calendar cal = Calendar.getInstance();
-			extent = new ExtentReports(System.getProperty("user.dir") + "/ExtentReport/SelJavaProjectReport__"
+			extent = new ExtentReports(System.getProperty("user.dir") + "/ExtentReport/JavaSelDemo"
 					+ cal.getTime().toString().replace(" ", "").replace(":", "_") + ".html", true);
-			extent.addSystemInfo("Environment", "Test Environment");
-			extent.addSystemInfo("Host Name", System.getProperty("hostname")).addSystemInfo("Environment", "Automation Testing")
-					.addSystemInfo("User Name", "Pakshi");
+			extent.addSystemInfo("Environment", "Environment Name");
+			extent.addSystemInfo("Host Name", "Sel").addSystemInfo("Environment", "Automation Testing")
+					.addSystemInfo("User Name", "Pakshi Kumar");
 			extent.loadConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		} catch (Exception e) {
 			throw new Exception("Starting report failed " + e);

@@ -29,7 +29,7 @@ public class FlightsFunction {
 	 */
 	public static void verifyFLightFinderDisplayed(WebDriver driver, ExtentTest logger) throws Exception {
 		try {
-			Common.waitF(driver, 10L)
+			Common.waitF(driver, 3L)
 					.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[name='findflight']")));
 			Reporter.logScreenshots(driver, "FlightFinderPage", "pass", logger);
 		} catch (Exception e) {
